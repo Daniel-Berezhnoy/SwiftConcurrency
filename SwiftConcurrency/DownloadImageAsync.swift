@@ -41,7 +41,11 @@ class DownloadImageAsyncViewModel: ObservableObject {
     
     func getImage() {
         loader.downloadWithEscaping { [weak self] image, error in
-            if let image { self?.image = Image(uiImage: image) }
+            DispatchQueue.main.async {
+                if let image {
+                    self?.image = Image(uiImage: image)
+                }
+            }
         }
     }
 }
@@ -49,22 +53,23 @@ class DownloadImageAsyncViewModel: ObservableObject {
 class ImageLoader {
     let url = URL(string: "https://picsum.photos/200")!
     
-    func downloadWithEscaping(completionHandler: @escaping (_ image: UIImage?, _ error: Error?) -> Void ) {
-        
+    func downloadWithEscaping(cHandler: @escaping (_ image: UIImage?, _ error: Error?) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let data,
-                let image = UIImage(data: data),
-                let response = response as? HTTPURLResponse,
-                200 ... 300 ~= response.statusCode
-                    
-            else {
-                completionHandler(nil, error)
-                return
-            }
-            
-            completionHandler(image, nil )
+            let image = self.handleResponse(data: data, response: response)
+            cHandler(image, error)
         }
         .resume()
+    }
+    
+    func handleResponse(data: Data?, response: URLResponse?) -> UIImage? {
+        guard
+            let data,
+            let image = UIImage(data: data),
+            let response = response as? HTTPURLResponse,
+            200 ... 300 ~= response.statusCode
+                
+        else { return nil }
+        
+        return image
     }
 }
