@@ -33,7 +33,7 @@ struct DownloadImageAsync: View {
     var button: some View {
         Button {
             Task {
-                await viewModel.getImage()
+//                await viewModel.getImage()
             }
         } label: {
             Label("Load Image", systemImage: "photo")

@@ -13,6 +13,7 @@
 		B92B1ED229526E6C006B3012 /* DoCatchTryThrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92B1ED129526E6C006B3012 /* DoCatchTryThrows.swift */; };
 		B92B1ED429527CAE006B3012 /* DownloadImageAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92B1ED329527CAE006B3012 /* DownloadImageAsync.swift */; };
 		B92B1ED62952A105006B3012 /* AsyncAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92B1ED52952A105006B3012 /* AsyncAwait.swift */; };
+		B92B1ED82952B3D4006B3012 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92B1ED72952B3D4006B3012 /* TaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		B92B1ED129526E6C006B3012 /* DoCatchTryThrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoCatchTryThrows.swift; sourceTree = "<group>"; };
 		B92B1ED329527CAE006B3012 /* DownloadImageAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageAsync.swift; sourceTree = "<group>"; };
 		B92B1ED52952A105006B3012 /* AsyncAwait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwait.swift; sourceTree = "<group>"; };
+		B92B1ED72952B3D4006B3012 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				B92B1ED129526E6C006B3012 /* DoCatchTryThrows.swift */,
 				B92B1ED329527CAE006B3012 /* DownloadImageAsync.swift */,
 				B92B1ED52952A105006B3012 /* AsyncAwait.swift */,
+				B92B1ED72952B3D4006B3012 /* TaskView.swift */,
 				B92B1EC729526D84006B3012 /* Assets.xcassets */,
 				B92B1EC929526D84006B3012 /* Preview Content */,
 			);
@@ -145,6 +148,7 @@
 			files = (
 				B92B1ED429527CAE006B3012 /* DownloadImageAsync.swift in Sources */,
 				B92B1ED229526E6C006B3012 /* DoCatchTryThrows.swift in Sources */,
+				B92B1ED82952B3D4006B3012 /* TaskView.swift in Sources */,
 				B92B1EC429526D82006B3012 /* SwiftConcurrencyApp.swift in Sources */,
 				B92B1ED62952A105006B3012 /* AsyncAwait.swift in Sources */,
 			);

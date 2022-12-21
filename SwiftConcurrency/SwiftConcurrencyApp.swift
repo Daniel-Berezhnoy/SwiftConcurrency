@@ -11,7 +11,15 @@ import SwiftUI
 struct SwiftConcurrencyApp: App {
     var body: some Scene {
         WindowGroup {
-            AsyncAwait()
+            NavigationStack {
+                NavigationLink {
+                    TaskView()
+                } label: {
+                    Text("Click Me 🥹")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                }
+            }
         }
     }
 }
