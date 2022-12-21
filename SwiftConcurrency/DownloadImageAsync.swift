@@ -67,7 +67,10 @@ class DownloadImageAsyncViewModel: ObservableObject {
 //        }
         
         let image = try? await loader.downloadWithAsync()
-        self.image = Image(uiImage: image ?? UIImage(systemName: "swift")!)
+        
+        await MainActor.run {
+            self.image = Image(uiImage: image ?? UIImage(systemName: "swift")!)
+        }
     }
 }
 
@@ -75,7 +78,7 @@ class ImageLoader {
     
     let url = URL(string: "https://picsum.photos/200")!
     
-    func handleResponse(data: Data?, response: URLResponse?) -> UIImage? {
+    func createAnImage(from data: Data?, with response: URLResponse?) -> UIImage? {
         guard
             let data,
             let image = UIImage(data: data),
@@ -89,7 +92,7 @@ class ImageLoader {
     
     func downloadWithEscaping(handler: @escaping (_ image: UIImage?, _ error: Error?) -> Void) {
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            let image = self?.handleResponse(data: data, response: response)
+            let image = self?.createAnImage(from: data, with: response)
             handler(image, error)
         }
         .resume()
@@ -98,9 +101,9 @@ class ImageLoader {
     func downloadWithAsync() async throws -> UIImage? {
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
-            return handleResponse(data: data, response: response)
+            return createAnImage(from: data, with: response)
         } catch {
             throw error
         }
-    } 
+    }
 }
